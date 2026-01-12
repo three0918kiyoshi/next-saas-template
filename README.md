@@ -88,6 +88,9 @@ npm run dev
 1. Vercel の Project Settings で `DATABASE_URL` を設定
 2. そのままデプロイ
 
+Neon のようにコネクションプールを使う場合は、マイグレーション用に
+プールを使わない `DIRECT_URL` も設定してください。
+
 `npm run build` に `prisma generate` を含め、さらに `postinstall` でも生成するため、
 ビルド時に Prisma Client が確実に生成されます。
 
@@ -132,6 +135,7 @@ DATABASE_URL="postgresql://postgres:postgres@db:5432/next_saas?schema=public" \
 
 - **マイグレーションエラー**
   - `DATABASE_URL` が正しいか確認してください。
+  - Neon などのコネクションプール環境では `DIRECT_URL` を設定してください。
   - 開発時は `npm run db:migrate` を利用してください。
 
 - **Vercel でビルドが失敗する**
